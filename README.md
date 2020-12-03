@@ -5,3 +5,7 @@
 * Germán
 * Álvaro
 
+Lenguajes utilizados:
+* Mongodb
+* .json
+
