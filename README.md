@@ -6,6 +6,6 @@
 * Álvaro
 
 Lenguajes utilizados:
-* Mongodb
-* .json
+* Mongodb (con .JSON)
+* Javascript
 
