@@ -1,0 +1,17 @@
+[{
+  "_id": {
+    "$oid": "5fca4e6adaa3794a742b3d5b"
+  },
+  "fecha": "19/11/2020",
+  "nombre": "Acta del Consejo de Departamento N27",
+  "dni_admin": "77223344C",
+  "URL": "https://ugr.es/home/acta_n27.pdf"
+},{
+  "_id": {
+    "$oid": "5fca4e9edaa3794a742b3d5c"
+  },
+  "fecha": "29/11/2020",
+  "nombre": "Acta del Consejo de Departamento N24",
+  "dni_admin": "23253321C",
+  "URL": "https://ugr.es/home/acta_n24.pdf"
+}]

@@ -1,0 +1,17 @@
+[{
+  "_id": {
+    "$oid": "5fca50cadaa3794a742b3d5d"
+  },
+  "orden": "",
+  "miembro": [
+    {
+      "nombre": " ",
+      "apellido": " ",
+      "dni": " "
+    }
+  ],
+  "creditos": " ",
+  "minimo_creditos": " ",
+  "pasa_turno": " ",
+  "entra_F1": " "
+}]
