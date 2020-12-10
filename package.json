@@ -1,0 +1,32 @@
+{
+  "name": "ddsic2_7",
+  "version": "1.0.0",
+  "description": "* Alberto\r * Santiago\r * Germán\r * Álvaro",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^3.6.3",
+    "mongoose": "^5.11.2",
+    "pug": "^3.0.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.13",
+    "nodemon": "^2.0.6"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./server.js",
+    "ui": "browser-sync start --config bs-config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acanojaen/ddsic2_7.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/acanojaen/ddsic2_7/issues"
+  },
+  "homepage": "https://github.com/acanojaen/ddsic2_7#readme"
+}
