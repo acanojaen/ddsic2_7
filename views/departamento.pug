@@ -1,0 +1,27 @@
+extends layout
+
+block layout-content
+  div.View.HomeView
+    h1.Banner DECSAI
+    div.Menu
+      a(href="/departamento")
+          div.MenuButton Informes departamento
+      a(href="/docencia")
+          div.MenuButton Informes docencia
+    div.Body
+      if informes.length
+        table
+          tr 
+            th Fecha 
+            th Nombre
+            th DNI
+            th Enlace
+        each informe in informes
+          tr
+            td= informe.fecha
+            td= informe.nombre
+            td= informe.dni_admin
+            td= informe.URL
+      else
+        p No hay datos en la base de datos
+                
