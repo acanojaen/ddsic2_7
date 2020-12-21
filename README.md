@@ -8,4 +8,4 @@
 Lenguajes utilizados:
 * Mongodb (con .JSON)
 * Javascript
-
+* PUG (sistema de vistas)
