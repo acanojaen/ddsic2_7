@@ -8,7 +8,12 @@ block layout-content
           div.MenuButton Informes departamento
       a(href="/docencia")
           div.MenuButton Informes docencia
+    div.Submenu
+      a(href="/nuevo_informe")
+          div.MenuButton Añadir informe
     div.Body
+      h2= "INFORMES DE DEPARTAMENTO"
+      h1= "LISTAR"
       if informes.length
         table
           tr 
@@ -16,12 +21,22 @@ block layout-content
             th Nombre
             th DNI
             th Enlace
-        each informe in informes
-          tr
-            td= informe.fecha
-            td= informe.nombre
-            td= informe.dni_admin
-            td= informe.URL
+            th 
+          each informe in informes
+            tr
+              td= informe.fecha
+              td= informe.nombre
+              td= informe.dni_admin
+              td
+                if informe.URL 
+                  a(href=informe.URL target='_blank') Ver
+                else 
+                  form(method='post' action=`/subir_archivo/`+informe.fecha enctype='multipart/form-data')
+                    input(type='file', name='imageupload')
+                    input(type='submit', name='uploadimage', value='Upload Image')
+              td 
+                form(method="post" action=`/departamento/`+informe.fecha)
+                  button(type='submit' value=informe.fecha) Eliminar
       else
         p No hay datos en la base de datos
                 

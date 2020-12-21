@@ -1,0 +1,25 @@
+extends layout
+
+block layout-content
+  div.View.HomeView
+    h1.Banner DECSAI
+    div.Menu
+      a(href="/departamento")
+          div.MenuButton Informes departamento
+      a(href="/docencia")
+          div.MenuButton Informes docencia
+    div.Submenu
+      a(href="/nuevo_informe")
+          div.MenuButton Añadir informe
+    div.Body
+      h2= "INFORMES DE DEPARTAMENTO"
+      h1= "AÑADIR"
+      form(action="/nuevo_informe" method="POST")
+        p Fecha:
+          input(type="text" name="fecha" placeholder="")
+        p Nombre:
+          input(type="text" name="nombre" placeholder="")
+        p DNI:
+          input(type="text" name="dni" placeholder="")
+        input(type="submit")
+                

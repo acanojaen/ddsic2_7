@@ -15,26 +15,27 @@ table {
 }
 
 tbody {
-  background-color: #a5b1c2;
+  background-color: #fff;
 }
 
 th,
 td {
-  text-align: left;
   text-transform: capitalize;
   border: 1px solid #fff;
-  color: #fff;
+  color: #000;
+  height: 20px;
 }
 
 th {
   padding: 8px 10px;
-  height: 48px;
+  height: 20%;
   background-color: #808e9b;
 }
 
-td {
+tr, td {
+  background-color: #fff;
   padding: 6px 8px;
-  height: 40px;
+  height: 20%;
 }
 
 tbody tr:hover {
@@ -48,6 +49,7 @@ tbody tr:hover {
 
 .HomeView {
   background: url("../img/background.jpg");
+  background-attachment: fixed;
   background-size: cover;
 
 }
@@ -145,7 +147,19 @@ a {
   margin-right: 5%;
 
   overflow: hidden;
-  padding: 15px;
+  padding: 5px;
+
+  font-family: "Share Tech Mono", monospace;
+}
+
+.Submenu {
+  display: flex;
+  background-color: #D5DBDB;
+  max-width: 90%;
+  max-height: 25px;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 5px;
 
   font-family: "Share Tech Mono", monospace;
 }
@@ -157,7 +171,7 @@ a {
   margin-left: 5%;
   margin-right: 5%;
   font-family: "Share Tech Mono", monospace;
-
+  padding: 10px;
   border-bottom: var(--ui-shadow-border);
   box-shadow: var(--ui-shadow);
 }
