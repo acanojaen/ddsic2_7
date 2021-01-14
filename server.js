@@ -52,11 +52,11 @@ mongodb.connect(config.dbURL, function(err, con){
 
   common.informes_departamento = db.collection("informes_departamento");
   common.informes_docencia = db.collection("informes_docencia");
+
 });
 
 /**
  * Vistas
- * 
  */
 
 app.get("/", (req, res) => {

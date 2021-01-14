@@ -1,0 +1,13 @@
+extends layout
+
+block layout-content
+  div.View.HomeView
+    h1.Banner DECSAI
+    div.Menu
+      a(href="/departamento")
+          div.MenuButton Informes departamento
+    div.Submenu
+      a(href="/nuevo_informe")
+          div.MenuButton Añadir informe
+    div.Body
+      p #{error}

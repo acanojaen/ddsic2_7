@@ -6,18 +6,22 @@ block layout-content
     div.Menu
       a(href="/departamento")
           div.MenuButton Informes departamento
-      a(href="/docencia")
-          div.MenuButton Informes docencia
     div.Submenu
       a(href="/nuevo_informe")
           div.MenuButton Añadir informe
     div.Body
       h2= "INFORMES DE DEPARTAMENTO"
-      h1= "LISTAR"
+      h2= "FILTROS"
       if informes.length
+        form(action="/filtrar" method="GET")
+          select(name="selectpick")
+            each variable in datalist
+              option(value=variable) #{variable}
+          input(type="submit" value="Filtrar")
         table
           tr 
             th Fecha 
+            th Tipo
             th Nombre
             th DNI
             th Enlace
@@ -25,18 +29,20 @@ block layout-content
           each informe in informes
             tr
               td= informe.fecha
+              td= informe.tipo
               td= informe.nombre
               td= informe.dni_admin
               td
                 if informe.URL 
                   a(href=informe.URL target='_blank') Ver
+                  p #{informe.URL}
                 else 
                   form(method='post' action=`/subir_archivo/`+informe.fecha enctype='multipart/form-data')
                     input(type='file', name='imageupload')
-                    input(type='submit', name='uploadimage', value='Upload Image')
+                    input(type='submit', name='uploadimage', value='Upload')
               td 
                 form(method="post" action=`/departamento/`+informe.fecha)
                   button(type='submit' value=informe.fecha) Eliminar
       else
-        p No hay datos en la base de datos
+        p No hay informes disponibles
                 

@@ -3,19 +3,21 @@ const common = require('../common')
 const path = require('path');
 const router = express.Router();
 const methodOverride = require('method-override');
+const types = ["", "Consejo de Departamento", "Junta de Direccion", "Junta de Comisiones"]
 router.use(methodOverride('_method'));
 
 // Listar todos los informes de departamento:
+
 exports.findAll = function(req, res){  
     common.informes_departamento.find({}).toArray(function(err, inf) {
         if (err) {
             res.send(err);
         } else if (inf.length) {
             res.render('departamento', {
-                'informes': inf,
+                'informes': inf, datalist: types,
             });
         } else {
-            res.send('No documents found');
+            res.render('error', {error: 'No hay ningún informe de departamento existente.'});
         }
       });  
 };
@@ -24,19 +26,35 @@ exports.anadirInforme = function(req, res){
     common.informes_departamento.findOne({"fecha":req.body.fecha}).then(
         function(informe) {
             if(informe != null)
-                res.send('Ya hay un informe con esa fecha');
-            else {
-                if(req.body.nombre != null && req.body.dni != null){
-                        
-                    common.informes_departamento.insertOne({"fecha":req.body.fecha, "nombre":req.body.nombre, "dni_admin": req.body.dni, "URL": ""}, function(err, inserted) {
+            res.render('error', {error: 'Ya existe un informe con esa fecha.'});
+            else if(req.body.selectpick == ""){
+                res.render('error', {error: 'Es necesario seleccionar tipo de informe.'});
+            } else {
+                if(req.body.nombre != null && req.body.dni != null){  
+                    common.informes_departamento.insertOne({"fecha":req.body.fecha, "tipo": req.body.selectpick, "nombre":req.body.nombre, "dni_admin": req.body.dni, "URL": ""}, 
+                    function(err, inserted) {
                         res.redirect('/departamento');
                     });
                 } else {
-                    res.send('Campos incorrectos');
+                    res.render('error', {error: 'Campos incorrectos'});
                 }
             }},
       function(err) { console.log(err) }
     );
+};
+
+exports.findTipo = function(req, res){
+    common.informes_departamento.find({"tipo":req.query.selectpick}).toArray(function(err, inf) {
+        if (err) {
+            res.send(err);
+        } else if (inf.length) {
+            res.render('departamento', {
+                'informes': inf, datalist: types,
+            });
+        } else {
+            res.render('error', {error: 'Necesitas seleccionar un tipo para filtrar o no existe ningun documento para esa categoria'});
+        }
+      });  
 };
 
 exports.delete = function(req, res){
@@ -50,18 +68,6 @@ exports.delete = function(req, res){
     });
 };
 
-exports.nuevoArchivo = function(req, res){
-    console.log(req)
-    fecha_nuevo = req.params.dd + "/" + req.params.mm + "/" + req.params.aaaa;
-    common.informes_departamento.findOne({"fecha": fecha_nuevo}, function(err, results) {
-        if (err){
-            console.log("failed");
-            throw err;
-        }
-
-        res.render('subir_archivo', {title: 'Añadir informe departamento', fech: fecha_nuevo});
-    });
-};
 exports.subirArchivo = function(req, res){
     fecha_nuevo = req.params.dd + "/" + req.params.mm + "/" + req.params.aaaa;
     console.log(req.body)
@@ -78,5 +84,5 @@ exports.subirArchivo = function(req, res){
 }
 
 exports.nuevoInforme = function(req, res){
-    res.render('nuevo_informe', {title: 'Añadir informe departamento'});
+    res.render('nuevo_informe', {title: 'Añadir informe departamento', datalist: types});
 }

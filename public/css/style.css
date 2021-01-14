@@ -48,7 +48,7 @@ tbody tr:hover {
 }
 
 .HomeView {
-  background: url("../img/background.jpg");
+  background: url("../img/background.png");
   background-attachment: fixed;
   background-size: cover;
 
@@ -166,7 +166,7 @@ a {
 
 .Body {
   background: white;
-  max-height: 50%;
+  max-height: 100%;
   max-width: 90%;
   margin-left: 5%;
   margin-right: 5%;
@@ -196,7 +196,7 @@ a {
 
 .MenuButton {
   height: 15px;
-  background: #fa4141;
+  background: #007e8f;
   border-radius: 30px;
   margin-left: 3px;
   margin-right: 3px;
@@ -206,4 +206,12 @@ a {
   text-transform: capitalize;
   border-bottom: var(--ui-shadow-border);
   box-shadow: var(--ui-shadow);
+}
+
+.MenuButton:hover {
+
+
+  text-decoration: none;
+
+
 }
